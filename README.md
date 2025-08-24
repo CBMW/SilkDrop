@@ -1,125 +1,132 @@
-SILKdrop
+# SILKdrop
 
-SILKdrop is an open-source, post-exploitation exfiltration PoC for ethical red teamers and defenders. It is designed to simulate highly advanced Living-Off-The-Land (LOTL), fileless, and fully undetectable (FUD) data exfiltration against live, modern EDR/SOC teams.
-Disclaimer & Ethical Use
+SILKdrop is an open-source, advanced post-exploitation data exfiltration proof-of-concept built in Rust. Designed for authorized red team and security research activities, SILKdrop leverages stealthy, fileless, and Living-Off-The-Land (LOTL) techniques to emulate fully undetectable (FUD) exfiltration attacks against modern EDR and SOC teams.
 
-    WARNING: ETHICAL, AUTHORIZED USE ONLY
+---
 
-    SILKdrop is provided strictly for use in legal, authorized penetration testing and red team engagements by security professionals.
-    Never operate this tool without explicit, written consent from the owner of the systems being tested.
+## DISCLAIMER & ETHICAL USE
 
-        Unauthorized use of SILKdrop is illegal and unethical.
+> FOR AUTHORIZED SECURITY TESTING AND EDUCATION ONLY
+>
+> SILKdrop is strictly intended for use by professional penetration testers, red teamers, or researchers operating under explicit, written authorization from the owners of the targeted systems.
+>
+> - Never use this tool for unauthorized, unethical, or illegal activities.
+> - Any form of malicious or non-consensual use is strictly prohibited and may be unlawful.
+> - The author ([cbmw](https://github.com/cbmw)) and contributors assume no liability for damages or consequences resulting from misuse.
+> - By downloading, cloning, or contributing, you acknowledge all responsibility for ethical, legal, and safe usage.  
+> - If you do not understand or accept these terms, do not use SILKdrop.
+>
+> Always consult with stakeholders, define your scope in writing, and follow responsible disclosure practices. If you find detection gaps, report them responsibly.
 
-        Malicious, criminal, or offensive use is strictly prohibited.
+---
 
-        The authors and contributors (cbmw) assume no responsibility for misuse, damages, or consequences arising from use outside of ethical boundaries.
+## Table of Contents
 
-        By using, cloning, or contributing to SILKdrop, you accept these terms and all relevant laws/regulations.
+- [Overview](#overview)
+- [Features](#features)
+- [Ethical Commitment](#ethical-commitment)
+- [Post-Exploitation Guidance](#post-exploitation-guidance)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Legal Notice](#legal-notice)
 
-        If you are in doubt, do not use the tool.
+---
 
-    Always respect legal frameworks and the rights of organizations. When in doubt, seek written approval and operate transparently. If you discover detection gaps or vulnerabilities, follow responsible disclosure.
+## Overview
 
-Table of Contents
+SILKdrop simulates advanced threat actor tactics by exfiltrating data covertly via built-in, trusted system tools and memory-resident payloads. This provides valuable insight into detection blind spots and helps blue teams fine-tune their monitoring and response.
 
-    Overview
+Strictly for research, education, and authorized adversary simulation.
 
-    Features
+---
 
-    Ethical Commitment
+## Features
 
-    Post-Exploitation Use & Guidance
+- Fileless Operation: No data written to disk, minimizing forensic footprint.
+- LOTL / LOLBins: Utilizes only OS-native binaries for exfiltration.
+- EDR/SOC Evasion: Designed to test and challenge advanced defense mechanisms.
+- Modular Exfil Vectors: Supports extensibility for multiple stealth channels (HTTP, DNS, SMB, etc.).
+- High OPSEC: Unusual patterns minimized for realism and stealth.
+- Rust Core: Modern, safe systems programming for robust, reliable execution.
 
-    Installation
+---
 
-    Usage
+## Ethical Commitment
 
-    Contributing
+- Focus: Empower defenders and red teams to identify, test, and close exfiltration blind spots—not for real-world data theft or harm.
+- Scope: Use ONLY during authorized engagements, adversary simulations, or academic research with full written permission.
+- Data Handling: All simulated or exfiltrated artifacts must be sanitized, logged, and destroyed per engagement and privacy requirements.
+- Disclosure: Promptly report any vulnerabilities or detection gaps you uncover through responsible channels.
 
-    License
+---
 
-    Legal Notice
+## Post-Exploitation Guidance
 
-Overview
+SILKdrop is to be used strictly in post-exploitation phases:
+- Deploy only after gaining lawful access as part of an authorized assessment.
+- Exfiltrate only simulation data or pre-cleared artifacts as per engagement rules.
+- Share all results with the target SOC/blue team for defensive improvement.
+- Do not persist, propagate, or remain after assessment—leave the environment as you found it.
+- Log and document all activity for transparency and audit.
 
-SILKdrop, built in Rust, aims to test and improve modern detection capabilities through the simulation and research of data exfiltration via native, fileless, and LOLBins approaches.
-This tool supports defenders in raising their detection/barriers while empowering red teamers to demonstrate real-world risk and improve security posture.
-Features
+Examples of correct use:
+- Simulating credential or sensitive file exfiltration as part of a purple/red team exercise.
+- Helping blue teams track stealthy exfiltration and enhance detection capability.
+- Conducting academic research or tool analysis under clear ethical oversight.
 
-    Fileless Exfiltration: Transfer data in-memory with no on-disk footprint.
+---
 
-    LOTL/LOLBins: Uses only built-in, trusted binaries/utilities for stealth.
+## Installation
 
-    EDR/SOC Evasion: Intentionally challenges detection depth using modern evasion patterns.
+Prerequisite: Latest Rust toolchain
 
-    Exfiltration Vectors: Modular, extensible (HTTP, DNS, SMB, etc.).
-
-    OPSEC-Focused: Minimal abnormal signs, designed to simulate serious adversary TTPs.
-
-    Written in Rust: Memory safety and performance with low false-positive risk.
-
-Ethical Commitment
-
-    SILKdrop’s intent is education, simulation, and defense—not for abuse.
-
-    Use only in approved PEN engagements, red vs blue exercises, adversary simulation, or academic research.
-
-    Data must never be exfiltrated to unauthorized parties, and all results should be handled, stored, and destroyed per engagement contract and regulatory laws.
-
-    All operations must be disclosed to and agreed with stakeholders pre-engagement.
-
-    Vulnerability or gap discovery should be reported responsibly; contact the affected vendor or defender if you discover critical issues.
-
-Post-Exploitation Use & Guidance
-
-SILKdrop is a post-exploitation tool:
-
-    Use only after gaining legitimate access/foothold during an authorized test.
-
-    Demonstrates stealth exfiltration (creds, IP, simulated data) to help SOC teams recognize blind spots and improve detection capabilities.
-
-    All sensitive exfiltrated artifacts should be sanitized, logged in your report, treated as confidential, and destroyed upon assessment completion (proof of deletion strongly recommended).
-
-    Run only with clear scope and boundaries, as described in your engagement documentation.
-
-    Reminders for Engagements:
-
-        Always define the scope, rules of engagement, and expected outcomes before running SILKdrop.
-
-        Never use real client data for demo/practice outside a legitimate engagement.
-
-        Do not maintain persistence or propagate; operate with minimal impact and respect to operational integrity.
-
-Installation
-
-bash
-# Prerequisite: Rust stable toolchain
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+Clone and build
 
-# Clone and build
-git clone https://github.com/cbmw/SILKdrop.git
-cd SILKdrop
+git clone https://github.com/CBMW/SilkDrop.git
+cd SilkDrop
 cargo build --release
 
-Usage
+text
 
-Run with appropriate switches (after compromise, on an authorized host):
+---
 
-bash
-./silkdrop --mode lotl --vector dns --target "C:\\SensitiveData" 
+## Usage
+
+Always operate within your approved engagement scope. Run on authorized infrastructure only.
+
+Example (after gaining validated access)
+
+./silkdrop --mode lotl --vector dns --target "C:\SensitiveData"
 ./silkdrop --exfil http --cmd "whoami"
 
-Consult --help for options and operation modes.
-Contributing
+text
 
-Contributions welcome. All pull requests must adhere to the ethical standards above. Improvements should be clearly justified for detection research, defense, or security education.
-License
+See `--help` for detailed usage and all available exfiltration vectors.
 
-Distributed under MIT License (see LICENSE).
-Legal Notice
+---
 
-SILKdrop is for security professionals working lawfully within the terms of written authorization, NDAs, and all applicable laws.
-Misuse for unauthorized access, data exfiltration, or any illegal purpose is strictly forbidden and will result in denied support and potential reporting to relevant authorities.
-Use at your own risk.
+## Contributing
 
-Developed and maintained by [cbmw], inspired by the open-source and professional security testing community.
+Contributions are welcome! Please ensure all PRs/documentation adhere to the above ethical guidelines.  
+Suggest improvements, new detection-resistant modules, or enhanced blue team use cases.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+---
+
+## Legal Notice
+
+SILKdrop is developed for security professionals working responsibly, lawfully, and transparently.  
+Misuse for unauthorized access, exfiltration, or criminal activity is strictly forbidden and may be reported to relevant authorities.  
+All use is at your own risk.
+
+---
+
+Developed and maintained by [cbmw](https://github.com/cbmw), inspired by open-source best practices and the ethical security community.
